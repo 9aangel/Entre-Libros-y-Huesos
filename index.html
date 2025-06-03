@@ -30,45 +30,16 @@
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(140, 29, 64, 0.3);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 2rem 0;
+            text-align: center;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #8c1d40;
             text-decoration: none;
             letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #b0b0b0;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-        }
-
-        .nav-links a:hover {
-            color: #8c1d40;
-            background: rgba(140, 29, 64, 0.1);
-            transform: translateY(-1px);
         }
 
         /* Main Content */
@@ -189,46 +160,6 @@
             transform: translateX(5px);
         }
 
-        /* Sidebar */
-        .sidebar {
-            background: rgba(40, 40, 40, 0.95);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(140, 29, 64, 0.1);
-        }
-
-        .sidebar h3 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background: linear-gradient(45deg, #8c1d40, #a52a4a);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(140, 29, 64, 0.3);
-        }
-
-        .tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(140, 29, 64, 0.4);
-            background: linear-gradient(45deg, #a52a4a, #8c1d40);
-        }
-
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.9);
@@ -263,10 +194,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -286,6 +213,9 @@
         .blog-card:nth-child(1) { animation-delay: 0.1s; }
         .blog-card:nth-child(2) { animation-delay: 0.2s; }
         .blog-card:nth-child(3) { animation-delay: 0.3s; }
+        .blog-card:nth-child(4) { animation-delay: 0.4s; }
+        .blog-card:nth-child(5) { animation-delay: 0.5s; }
+        .blog-card:nth-child(6) { animation-delay: 0.6s; }
 
         @keyframes fadeInUp {
             to {
@@ -297,15 +227,9 @@
 </head>
 <body>
     <header>
-        <nav class="container">
-            <a href="#" class="logo">Entre libros y Huesos</a>
-            <ul class="nav-links">
-                <li><a href="#medicina">Medicina</a></li>
-                <li><a href="#filosofia">Filosofía</a></li>
-                <li><a href="#politica">Política</a></li>
-                <li><a href="#lecturas">Lecturas</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1 class="logo">Entre libros y Huesos</h1>
+        </div>
     </header>
 
     <main class="container">
@@ -315,96 +239,76 @@
         </section>
 
         <section class="blog-grid">
-            <article class="blog-card">
+            <article class="blog-card" id="bioetica-ia">
                 <div class="blog-image" style="background: linear-gradient(45deg, #1a1a1a, #8c1d40);"></div>
                 <div class="blog-content">
                     <p class="blog-date">3 de Junio, 2025</p>
                     <h2 class="blog-title">La Bioética en la Era de la IA Médica</h2>
-                    <p class="blog-excerpt">¿Qué implicaciones éticas tiene el uso de inteligencia artificial en diagnósticos médicos? Una reflexión desde Kant hasta la medicina moderna...</p>
-                    <a href="#" class="read-more">Leer más →</a>
+                    <p class="blog-excerpt">¿Qué implicaciones éticas tiene el uso de inteligencia artificial en diagnósticos médicos? Una reflexión desde Kant hasta la medicina moderna. La inteligencia artificial está revolucionando la medicina, pero ¿estamos preparados éticamente para este cambio? Exploramos las tensiones entre la eficiencia tecnológica y los principios fundamentales de la bioética.</p>
                 </div>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" id="anatomia-filosofia">
                 <div class="blog-image" style="background: linear-gradient(45deg, #2a2a2a, #666666);"></div>
                 <div class="blog-content">
                     <p class="blog-date">28 de Mayo, 2025</p>
                     <h2 class="blog-title">Anatomía y Filosofía: El Cuerpo como Prisión</h2>
-                    <p class="blog-excerpt">Desde Platón hasta los anatomistas modernos: ¿cómo ha evolucionado nuestra comprensión filosófica del cuerpo humano?</p>
-                    <a href="#" class="read-more">Leer más →</a>
+                    <p class="blog-excerpt">Desde Platón hasta los anatomistas modernos: ¿cómo ha evolucionado nuestra comprensión filosófica del cuerpo humano? El dualismo mente-cuerpo que planteó Platón sigue resonando en la medicina actual. ¿Es el cuerpo realmente una prisión del alma, o hemos encontrado nuevas formas de entender esta relación fundamental?</p>
                 </div>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" id="salud-publica">
                 <div class="blog-image" style="background: linear-gradient(45deg, #404040, #8c1d40);"></div>
                 <div class="blog-content">
                     <p class="blog-date">22 de Mayo, 2025</p>
                     <h2 class="blog-title">Políticas de Salud Pública: Lecciones Post-Pandemia</h2>
-                    <p class="blog-excerpt">Análisis crítico de las decisiones gubernamentales durante la pandemia y sus implicaciones para futuras crisis sanitarias...</p>
-                    <a href="#" class="read-more">Leer más →</a>
+                    <p class="blog-excerpt">Análisis crítico de las decisiones gubernamentales durante la pandemia y sus implicaciones para futuras crisis sanitarias. La pandemia nos enseñó tanto sobre medicina como sobre política. ¿Qué lecciones podemos extraer para fortalecer nuestros sistemas de salud pública?</p>
                 </div>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" id="viktor-frankl">
                 <div class="blog-image" style="background: linear-gradient(45deg, #1a1a1a, #404040);"></div>
                 <div class="blog-content">
                     <p class="blog-date">15 de Mayo, 2025</p>
                     <h2 class="blog-title">Reseña: "El Hombre en Busca de Sentido" de Viktor Frankl</h2>
-                    <p class="blog-excerpt">La perspectiva de un neurólogo y psiquiatra en los campos de concentración: ¿qué nos enseña sobre la condición humana?</p>
-                    <a href="#" class="read-more">Leer más →</a>
+                    <p class="blog-excerpt">La perspectiva de un neurólogo y psiquiatra en los campos de concentración: ¿qué nos enseña sobre la condición humana? Frankl combinó su conocimiento médico con una experiencia límite para crear una filosofía profundamente humana. Sus reflexiones siguen siendo relevantes para la medicina moderna.</p>
                 </div>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" id="sistema-salud-argentina">
                 <div class="blog-image" style="background: linear-gradient(45deg, #2a2a2a, #8c1d40);"></div>
                 <div class="blog-content">
                     <p class="blog-date">8 de Mayo, 2025</p>
                     <h2 class="blog-title">El Sistema de Salud Argentino: Un Diagnóstico Crítico</h2>
-                    <p class="blog-excerpt">Análisis de las fortalezas y debilidades de nuestro sistema sanitario desde la perspectiva de un futuro médico...</p>
-                    <a href="#" class="read-more">Leer más →</a>
+                    <p class="blog-excerpt">Análisis de las fortalezas y debilidades de nuestro sistema sanitario desde la perspectiva de un futuro médico. Como estudiante de medicina en Argentina, he podido observar de cerca tanto los logros como los desafíos de nuestro sistema de salud. Un análisis honesto de dónde estamos parados.</p>
                 </div>
             </article>
 
-            <article class="blog-card">
+            <article class="blog-card" id="descartes-medicina">
                 <div class="blog-image" style="background: linear-gradient(45deg, #404040, #666666);"></div>
                 <div class="blog-content">
                     <p class="blog-date">1 de Mayo, 2025</p>
                     <h2 class="blog-title">Descartes y la Medicina: Mente vs. Cuerpo</h2>
-                    <p class="blog-excerpt">El dualismo cartesiano en la práctica médica moderna: ¿seguimos separando artificialmente mente y cuerpo?</p>
-                    <a href="#" class="read-more">Leer más →</a>
+                    <p class="blog-excerpt">El dualismo cartesiano en la práctica médica moderna: ¿seguimos separando artificialmente mente y cuerpo? Descartes revolucionó el pensamiento occidental, pero su separación radical entre mente y cuerpo aún influye en cómo practicamos la medicina. ¿Es hora de superar esta división?</p>
                 </div>
             </article>
         </section>
-
-        <aside class="sidebar">
-            <h3>Categorías</h3>
-            <div class="tag-cloud">
-                <a href="#" class="tag">Medicina</a>
-                <a href="#" class="tag">Filosofía</a>
-                <a href="#" class="tag">Política</a>
-                <a href="#" class="tag">Bioética</a>
-                <a href="#" class="tag">Reseñas</a>
-                <a href="#" class="tag">Anatomía</a>
-                <a href="#" class="tag">Reflexiones</a>
-                <a href="#" class="tag">Salud Pública</a>
-            </div>
-        </aside>
     </main>
 
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" title="Instagram">📷</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="LinkedIn">💼</a>
-                <a href="#" title="Email">✉️</a>
+                <a href="https://instagram.com" target="_blank" title="Instagram">📷</a>
+                <a href="https://twitter.com" target="_blank" title="Twitter">🐦</a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn">💼</a>
+                <a href="mailto:contacto@example.com" title="Email">✉️</a>
             </div>
             <p>&copy; 2025 Entre libros y Huesos. Donde la medicina encuentra la filosofía.</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling para navegación
+        // Smooth scrolling para navegación interna
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -463,6 +367,27 @@
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Funcionalidad para "leer más" - expande el contenido
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = button.closest('.blog-card');
+                const excerpt = card.querySelector('.blog-excerpt');
+                
+                if (button.textContent.includes('Leer más')) {
+                    // Expandir contenido
+                    button.textContent = 'Leer menos ←';
+                    card.style.gridColumn = 'span 2';
+                    card.style.maxWidth = 'none';
+                } else {
+                    // Contraer contenido
+                    button.textContent = 'Leer más →';
+                    card.style.gridColumn = 'span 1';
+                    card.style.maxWidth = '';
+                }
             });
         });
     </script>
