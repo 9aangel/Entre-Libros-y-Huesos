@@ -32,6 +32,7 @@
             border-bottom: 1px solid rgba(140, 29, 64, 0.3);
             padding: 2rem 0;
             text-align: center;
+            position: relative;
         }
 
         .logo {
@@ -40,6 +41,24 @@
             color: #8c1d40;
             text-decoration: none;
             letter-spacing: -0.5px;
+        }
+
+        .admin-toggle {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(140, 29, 64, 0.2);
+            border: 1px solid rgba(140, 29, 64, 0.5);
+            color: #8c1d40;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-toggle:hover {
+            background: rgba(140, 29, 64, 0.3);
         }
 
         /* Main Content */
@@ -78,6 +97,171 @@
             color: #b0b0b0;
         }
 
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: rgba(40, 40, 40, 0.95);
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid rgba(140, 29, 64, 0.3);
+        }
+
+        .modal h2 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #b0b0b0;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(60, 60, 60, 0.8);
+            border: 1px solid rgba(140, 29, 64, 0.3);
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #8c1d40;
+        }
+
+        .btn {
+            background: #8c1d40;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #a52a4a;
+        }
+
+        .btn-secondary {
+            background: rgba(140, 29, 64, 0.2);
+            border: 1px solid rgba(140, 29, 64, 0.5);
+            margin-top: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(140, 29, 64, 0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #8c1d40;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            background: rgba(40, 40, 40, 0.95);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(140, 29, 64, 0.3);
+        }
+
+        .admin-panel h2 {
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .admin-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .admin-form textarea {
+            background: rgba(60, 60, 60, 0.8);
+            border: 1px solid rgba(140, 29, 64, 0.3);
+            border-radius: 4px;
+            color: #ffffff;
+            padding: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .admin-form textarea:focus {
+            outline: none;
+            border-color: #8c1d40;
+        }
+
+        .image-upload {
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-upload input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .image-upload-btn {
+            display: inline-block;
+            background: rgba(140, 29, 64, 0.2);
+            border: 1px solid rgba(140, 29, 64, 0.5);
+            color: #8c1d40;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload-btn:hover {
+            background: rgba(140, 29, 64, 0.3);
+        }
+
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 4px;
+            margin-top: 1rem;
+            display: none;
+        }
+
         /* Blog Grid */
         .blog-grid {
             display: grid;
@@ -94,6 +278,7 @@
             transition: all 0.4s ease;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(140, 29, 64, 0.1);
+            animation: fadeInUp 0.6s ease forwards;
         }
 
         .blog-card:hover {
@@ -107,6 +292,8 @@
             background: linear-gradient(45deg, #2a2a2a, #404040);
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
 
         .blog-image::before {
@@ -145,19 +332,32 @@
             line-height: 1.7;
         }
 
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #8c1d40;
-            text-decoration: none;
-            font-weight: 600;
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
+            margin-top: 1rem;
         }
 
-        .read-more:hover {
-            color: #a52a4a;
-            transform: translateX(5px);
+        .delete-btn:hover {
+            background: #c82333;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #b0b0b0;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
         }
 
         /* Footer */
@@ -201,23 +401,19 @@
             .blog-grid {
                 grid-template-columns: 1fr;
             }
-        }
 
-        /* Animations */
-        .blog-card {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
+            .admin-toggle {
+                position: static;
+                margin-top: 1rem;
+                transform: none;
+            }
         }
-
-        .blog-card:nth-child(1) { animation-delay: 0.1s; }
-        .blog-card:nth-child(2) { animation-delay: 0.2s; }
-        .blog-card:nth-child(3) { animation-delay: 0.3s; }
-        .blog-card:nth-child(4) { animation-delay: 0.4s; }
-        .blog-card:nth-child(5) { animation-delay: 0.5s; }
-        .blog-card:nth-child(6) { animation-delay: 0.6s; }
 
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -229,6 +425,7 @@
     <header>
         <div class="container">
             <h1 class="logo">Entre libros y Huesos</h1>
+            <button class="admin-toggle" onclick="showLoginModal()">Admin</button>
         </div>
     </header>
 
@@ -238,62 +435,63 @@
             <p>Reflexiones de un estudiante de medicina que navega entre la ciencia del cuerpo humano, la filosofía del alma y los debates que mueven al mundo.</p>
         </section>
 
-        <section class="blog-grid">
-            <article class="blog-card" id="bioetica-ia">
-                <div class="blog-image" style="background: linear-gradient(45deg, #1a1a1a, #8c1d40);"></div>
-                <div class="blog-content">
-                    <p class="blog-date">3 de Junio, 2025</p>
-                    <h2 class="blog-title">La Bioética en la Era de la IA Médica</h2>
-                    <p class="blog-excerpt">¿Qué implicaciones éticas tiene el uso de inteligencia artificial en diagnósticos médicos? Una reflexión desde Kant hasta la medicina moderna. La inteligencia artificial está revolucionando la medicina, pero ¿estamos preparados éticamente para este cambio? Exploramos las tensiones entre la eficiencia tecnológica y los principios fundamentales de la bioética.</p>
+        <!-- Admin Panel -->
+        <section class="admin-panel" id="adminPanel">
+            <h2>Panel de Administración</h2>
+            <form class="admin-form" onsubmit="addPost(event)">
+                <div class="form-group">
+                    <label for="postTitle">Título del artículo:</label>
+                    <input type="text" id="postTitle" required>
                 </div>
-            </article>
+                
+                <div class="form-group">
+                    <label for="postExcerpt">Extracto/Resumen:</label>
+                    <textarea id="postExcerpt" placeholder="Breve descripción del artículo..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postContent">Contenido completo:</label>
+                    <textarea id="postContent" placeholder="Contenido completo del artículo..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Imagen del artículo:</label>
+                    <div class="image-upload">
+                        <input type="file" id="postImage" accept="image/*" onchange="previewImage()">
+                        <label for="postImage" class="image-upload-btn">Seleccionar imagen</label>
+                    </div>
+                    <img id="imagePreview" class="image-preview" alt="Vista previa">
+                </div>
+                
+                <button type="submit" class="btn">Publicar Artículo</button>
+                <button type="button" class="btn btn-secondary" onclick="hideAdminPanel()">Cerrar Panel</button>
+            </form>
+        </section>
 
-            <article class="blog-card" id="anatomia-filosofia">
-                <div class="blog-image" style="background: linear-gradient(45deg, #2a2a2a, #666666);"></div>
-                <div class="blog-content">
-                    <p class="blog-date">28 de Mayo, 2025</p>
-                    <h2 class="blog-title">Anatomía y Filosofía: El Cuerpo como Prisión</h2>
-                    <p class="blog-excerpt">Desde Platón hasta los anatomistas modernos: ¿cómo ha evolucionado nuestra comprensión filosófica del cuerpo humano? El dualismo mente-cuerpo que planteó Platón sigue resonando en la medicina actual. ¿Es el cuerpo realmente una prisión del alma, o hemos encontrado nuevas formas de entender esta relación fundamental?</p>
-                </div>
-            </article>
-
-            <article class="blog-card" id="salud-publica">
-                <div class="blog-image" style="background: linear-gradient(45deg, #404040, #8c1d40);"></div>
-                <div class="blog-content">
-                    <p class="blog-date">22 de Mayo, 2025</p>
-                    <h2 class="blog-title">Políticas de Salud Pública: Lecciones Post-Pandemia</h2>
-                    <p class="blog-excerpt">Análisis crítico de las decisiones gubernamentales durante la pandemia y sus implicaciones para futuras crisis sanitarias. La pandemia nos enseñó tanto sobre medicina como sobre política. ¿Qué lecciones podemos extraer para fortalecer nuestros sistemas de salud pública?</p>
-                </div>
-            </article>
-
-            <article class="blog-card" id="viktor-frankl">
-                <div class="blog-image" style="background: linear-gradient(45deg, #1a1a1a, #404040);"></div>
-                <div class="blog-content">
-                    <p class="blog-date">15 de Mayo, 2025</p>
-                    <h2 class="blog-title">Reseña: "El Hombre en Busca de Sentido" de Viktor Frankl</h2>
-                    <p class="blog-excerpt">La perspectiva de un neurólogo y psiquiatra en los campos de concentración: ¿qué nos enseña sobre la condición humana? Frankl combinó su conocimiento médico con una experiencia límite para crear una filosofía profundamente humana. Sus reflexiones siguen siendo relevantes para la medicina moderna.</p>
-                </div>
-            </article>
-
-            <article class="blog-card" id="sistema-salud-argentina">
-                <div class="blog-image" style="background: linear-gradient(45deg, #2a2a2a, #8c1d40);"></div>
-                <div class="blog-content">
-                    <p class="blog-date">8 de Mayo, 2025</p>
-                    <h2 class="blog-title">El Sistema de Salud Argentino: Un Diagnóstico Crítico</h2>
-                    <p class="blog-excerpt">Análisis de las fortalezas y debilidades de nuestro sistema sanitario desde la perspectiva de un futuro médico. Como estudiante de medicina en Argentina, he podido observar de cerca tanto los logros como los desafíos de nuestro sistema de salud. Un análisis honesto de dónde estamos parados.</p>
-                </div>
-            </article>
-
-            <article class="blog-card" id="descartes-medicina">
-                <div class="blog-image" style="background: linear-gradient(45deg, #404040, #666666);"></div>
-                <div class="blog-content">
-                    <p class="blog-date">1 de Mayo, 2025</p>
-                    <h2 class="blog-title">Descartes y la Medicina: Mente vs. Cuerpo</h2>
-                    <p class="blog-excerpt">El dualismo cartesiano en la práctica médica moderna: ¿seguimos separando artificialmente mente y cuerpo? Descartes revolucionó el pensamiento occidental, pero su separación radical entre mente y cuerpo aún influye en cómo practicamos la medicina. ¿Es hora de superar esta división?</p>
-                </div>
-            </article>
+        <!-- Blog Posts -->
+        <section class="blog-grid" id="blogGrid">
+            <div class="empty-state">
+                <h3>No hay artículos publicados</h3>
+                <p>Utiliza el panel de administración para crear tu primer artículo.</p>
+            </div>
         </section>
     </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideLoginModal()">&times;</span>
+            <h2>Acceso de Administrador</h2>
+            <form onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn">Iniciar Sesión</button>
+                <button type="button" class="btn btn-secondary" onclick="hideLoginModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
@@ -308,21 +506,153 @@
     </footer>
 
     <script>
-        // Smooth scrolling para navegación interna
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        let isAdmin = false;
+        let posts = [];
 
-        // Efecto parallax sutil en el hero
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function hideLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('password').value = '';
+        }
+
+        function login(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            
+            if (password === '47330443') {
+                isAdmin = true;
+                hideLoginModal();
+                showAdminPanel();
+                document.querySelector('.admin-toggle').textContent = 'Cerrar Admin';
+                document.querySelector('.admin-toggle').onclick = toggleAdminPanel;
+            } else {
+                alert('Contraseña incorrecta');
+            }
+        }
+
+        function showAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+
+        function toggleAdminPanel() {
+            if (isAdmin) {
+                const panel = document.getElementById('adminPanel');
+                if (panel.style.display === 'block') {
+                    hideAdminPanel();
+                    document.querySelector('.admin-toggle').textContent = 'Abrir Admin';
+                } else {
+                    showAdminPanel();
+                    document.querySelector('.admin-toggle').textContent = 'Cerrar Admin';
+                }
+            } else {
+                showLoginModal();
+            }
+        }
+
+        function previewImage() {
+            const input = document.getElementById('postImage');
+            const preview = document.getElementById('imagePreview');
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function addPost(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('postTitle').value;
+            const excerpt = document.getElementById('postExcerpt').value;
+            const content = document.getElementById('postContent').value;
+            const imageFile = document.getElementById('postImage').files[0];
+            
+            let imageUrl = '';
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageUrl = e.target.result;
+                    createPost(title, excerpt, content, imageUrl);
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                createPost(title, excerpt, content, '');
+            }
+        }
+
+        function createPost(title, excerpt, content, imageUrl) {
+            const post = {
+                id: Date.now(),
+                title: title,
+                excerpt: excerpt,
+                content: content,
+                image: imageUrl,
+                date: new Date().toLocaleDateString('es-ES', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
+            };
+            
+            posts.unshift(post);
+            renderPosts();
+            clearForm();
+            hideAdminPanel();
+        }
+
+        function clearForm() {
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postExcerpt').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('postImage').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+
+        function deletePost(postId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este artículo?')) {
+                posts = posts.filter(post => post.id !== postId);
+                renderPosts();
+            }
+        }
+
+        function renderPosts() {
+            const blogGrid = document.getElementById('blogGrid');
+            
+            if (posts.length === 0) {
+                blogGrid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No hay artículos publicados</h3>
+                        <p>Utiliza el panel de administración para crear tu primer artículo.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            blogGrid.innerHTML = posts.map(post => `
+                <article class="blog-card">
+                    <div class="blog-image" style="background-image: url('${post.image}'); background-size: cover; background-position: center;"></div>
+                    <div class="blog-content">
+                        <p class="blog-date">${post.date}</p>
+                        <h2 class="blog-title">${post.title}</h2>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        ${isAdmin ? `<button class="delete-btn" onclick="deletePost(${post.id})">Eliminar</button>` : ''}
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Efectos visuales
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
@@ -331,65 +661,16 @@
             }
         });
 
-        // Animación de aparición de cards al hacer scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.blog-card').forEach(card => {
-            observer.observe(card);
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('loginModal');
+            if (e.target === modal) {
+                hideLoginModal();
+            }
         });
 
-        // Efecto de hover dinámico en las cards
-        document.querySelectorAll('.blog-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-
-        // Funcionalidad para "leer más" - expande el contenido
-        document.querySelectorAll('.read-more').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const card = button.closest('.blog-card');
-                const excerpt = card.querySelector('.blog-excerpt');
-                
-                if (button.textContent.includes('Leer más')) {
-                    // Expandir contenido
-                    button.textContent = 'Leer menos ←';
-                    card.style.gridColumn = 'span 2';
-                    card.style.maxWidth = 'none';
-                } else {
-                    // Contraer contenido
-                    button.textContent = 'Leer más →';
-                    card.style.gridColumn = 'span 1';
-                    card.style.maxWidth = '';
-                }
-            });
-        });
+        // Inicializar
+        renderPosts();
     </script>
 </body>
 </html>
